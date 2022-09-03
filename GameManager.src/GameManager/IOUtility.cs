@@ -339,6 +339,13 @@ namespace GameManager {
 				if (File.Exists(path)) {
 					filename = Path.GetFileName(path);
 					path = Path.GetDirectoryName(path);
+
+                    if(!IsFreeSpaceAvailable(game.Size))
+                    {
+                        System.Windows.Forms.MessageBox.Show("No Free Space Available");
+                        return;
+                    }
+
 					int index = path.IndexOf(game.RJCode);
 					if (index != -1) {
 						int length = path.IndexOf(Path.DirectorySeparatorChar.ToString(), index);
@@ -348,7 +355,7 @@ namespace GameManager {
 						}
 					}
                     else if(!String.IsNullOrWhiteSpace(game.RJCode)){
-                        //tbd
+                        // just to avoid the interruption when RJCode is available
                     }
                     else{
                         return;
@@ -357,7 +364,7 @@ namespace GameManager {
 				string path_before = Path.GetDirectoryName(path);
 				string foldername = Path.GetFileName(path);
 
-				if (Settings.Instance.RenameOrganize && !String.IsNullOrWhiteSpace(Settings.Instance.GameFolder) && Directory.Exists(Settings.Instance.GameFolder) && !game.Path.Contains(Settings.Instance.GameFolder)) {
+				if (Settings.Instance.RenameOrganize && !String.IsNullOrWhiteSpace(Settings.Instance.GameFolder) && Directory.Exists(Settings.Instance.GameFolder) && !foldername.Equals(Settings.Instance.GameFolder)) {
 					template = template.Replace("\\", "{dir_separator}");
 					path_before = Settings.Instance.GameFolder;						
 				}
@@ -385,6 +392,7 @@ namespace GameManager {
 				}
 				if(newpath != game.Path && !Directory.Exists(newpath) && newname.Contains(game.RJCode)) {
 					try {
+
 						new Computer().FileSystem.MoveDirectory(path, newname);
 						game.Path = newpath;
 						game.Save();
@@ -405,8 +413,18 @@ namespace GameManager {
 				}
 			}
 		}
-		
-		
+
+        /// <summary>
+        /// Checks for the free Space on the Main Folder
+        /// </summary>
+        /// <param name="gamesize">The Size of the Game</param>
+        /// <returns></returns>
+        public static bool IsFreeSpaceAvailable(int? gamesize)
+        {
+            string drive = Settings.Instance.GameFolder.Substring(0, 1);
+            DriveInfo driveInfo = new DriveInfo(drive);
+            return ((driveInfo.AvailableFreeSpace/1024f) > gamesize) ? true : false;
+        }
         /// <summary>
         /// Returns true if the specified path points to a game made with RPG Maker.
         /// </summary>
