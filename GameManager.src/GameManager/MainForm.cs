@@ -16,7 +16,6 @@ using BrightIdeasSoftware;
 namespace GameManager {
     public partial class MainForm : Form {
         private Button currentBtn;
-        private Panel leftBorderBtn;
         private GameListFilter filter;
         private PictureBox enlargedGameImage;
         private bool listInitialized = false;
@@ -140,11 +139,6 @@ namespace GameManager {
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
-                //Left border Button
-                leftBorderBtn.BackColor = color;
-                leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
-                leftBorderBtn.Visible = true;
-                leftBorderBtn.BringToFront();
             }
         }
         /// <summary>
@@ -155,7 +149,7 @@ namespace GameManager {
             if (currentBtn != null)
             {
                 //Button
-                currentBtn.BackColor = Color.FromArgb(85, 91, 130);
+                currentBtn.BackColor = Color.FromArgb(79, 97, 139);
                 currentBtn.ForeColor = Color.White;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -1889,6 +1883,16 @@ namespace GameManager {
         private void buttonHelp_Click(object sender, EventArgs e)
         {
             ActivateButtons(sender, RGBColors.color4);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelMenu_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

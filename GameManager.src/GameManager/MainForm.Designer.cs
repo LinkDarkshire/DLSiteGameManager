@@ -24,9 +24,10 @@ namespace GameManager {
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle4 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle5 = new BrightIdeasSoftware.HeaderStateStyle();
-            BrightIdeasSoftware.HeaderStateStyle headerStateStyle6 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle1 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle2 = new BrightIdeasSoftware.HeaderStateStyle();
+            BrightIdeasSoftware.HeaderStateStyle headerStateStyle3 = new BrightIdeasSoftware.HeaderStateStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.runToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openInExplorerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,11 +75,11 @@ namespace GameManager {
             this.headerFormatStyle = new BrightIdeasSoftware.HeaderFormatStyle();
             this.splitContainer = new GameManager.TweakedSplitContainer();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonHelp = new System.Windows.Forms.Button();
             this.buttonSettings = new System.Windows.Forms.Button();
             this.buttonLibary = new System.Windows.Forms.Button();
             this.buttonNewGames = new System.Windows.Forms.Button();
-            this.leftBorderBtn = new System.Windows.Forms.Panel();
             this.searchBar = new GameManager.SearchBar();
             this.gameList = new BrightIdeasSoftware.ObjectListView();
             this.imageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -100,6 +101,9 @@ namespace GameManager {
             this.hvdbtagsColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.commentsColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.gameEditControl = new GameManager.GameEditControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelTitleBar = new System.Windows.Forms.Panel();
             this.contextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -108,7 +112,9 @@ namespace GameManager {
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameList)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip
@@ -272,12 +278,13 @@ namespace GameManager {
             // 
             // menuStrip
             // 
+            this.menuStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actionToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Location = new System.Drawing.Point(0, 710);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -303,50 +310,50 @@ namespace GameManager {
             // 
             this.addGameToolStripMenuItem.Name = "addGameToolStripMenuItem";
             this.addGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.addGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addGameToolStripMenuItem.Text = "Add work";
             this.addGameToolStripMenuItem.Click += new System.EventHandler(this.addGameToolStripMenuItem_Click);
             // 
             // addGamesToolStripMenuItem
             // 
             this.addGamesToolStripMenuItem.Name = "addGamesToolStripMenuItem";
-            this.addGamesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.addGamesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addGamesToolStripMenuItem.Text = "Add works";
             this.addGamesToolStripMenuItem.Click += new System.EventHandler(this.addGamesToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // extractCgGameToolStripMenuItem
             // 
             this.extractCgGameToolStripMenuItem.Name = "extractCgGameToolStripMenuItem";
-            this.extractCgGameToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.extractCgGameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.extractCgGameToolStripMenuItem.Text = "Extract CG";
             this.extractCgGameToolStripMenuItem.Click += new System.EventHandler(this.extractCgGameToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(177, 6);
             // 
             // findDuplicatesToolStripMenuItem
             // 
             this.findDuplicatesToolStripMenuItem.Name = "findDuplicatesToolStripMenuItem";
-            this.findDuplicatesToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.findDuplicatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.findDuplicatesToolStripMenuItem.Text = "Find Duplicates";
             this.findDuplicatesToolStripMenuItem.Click += new System.EventHandler(this.findDuplicatesToolStripMenuItem_Click);
             // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(167, 6);
+            this.toolStripSeparator9.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -409,14 +416,14 @@ namespace GameManager {
             // statisticsToolStripMenuItem
             // 
             this.statisticsToolStripMenuItem.Name = "statisticsToolStripMenuItem";
-            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.statisticsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.statisticsToolStripMenuItem.Text = "Statistics...";
             this.statisticsToolStripMenuItem.Click += new System.EventHandler(this.statisticsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -424,7 +431,7 @@ namespace GameManager {
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 712);
+            this.statusStrip.Location = new System.Drawing.Point(0, 688);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip.Size = new System.Drawing.Size(1233, 22);
@@ -447,19 +454,19 @@ namespace GameManager {
             // 
             // headerFormatStyle
             // 
-            headerStateStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
-            headerStateStyle4.ForeColor = System.Drawing.Color.White;
-            headerStateStyle4.FrameColor = System.Drawing.Color.White;
-            this.headerFormatStyle.Hot = headerStateStyle4;
-            headerStateStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
-            headerStateStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
-            headerStateStyle5.FrameColor = System.Drawing.Color.Black;
-            headerStateStyle5.FrameWidth = 1F;
-            this.headerFormatStyle.Normal = headerStateStyle5;
-            headerStateStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
-            headerStateStyle6.ForeColor = System.Drawing.Color.White;
-            headerStateStyle6.FrameColor = System.Drawing.Color.White;
-            this.headerFormatStyle.Pressed = headerStateStyle6;
+            headerStateStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
+            headerStateStyle1.ForeColor = System.Drawing.Color.White;
+            headerStateStyle1.FrameColor = System.Drawing.Color.White;
+            this.headerFormatStyle.Hot = headerStateStyle1;
+            headerStateStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
+            headerStateStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(167)))), ((int)(((byte)(167)))));
+            headerStateStyle2.FrameColor = System.Drawing.Color.Black;
+            headerStateStyle2.FrameWidth = 1F;
+            this.headerFormatStyle.Normal = headerStateStyle2;
+            headerStateStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(75)))), ((int)(((byte)(73)))));
+            headerStateStyle3.ForeColor = System.Drawing.Color.White;
+            headerStateStyle3.FrameColor = System.Drawing.Color.White;
+            this.headerFormatStyle.Pressed = headerStateStyle3;
             // 
             // splitContainer
             // 
@@ -467,13 +474,12 @@ namespace GameManager {
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer.Location = new System.Drawing.Point(349, 103);
             this.splitContainer.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.Controls.Add(this.panelMenu);
             this.splitContainer.Panel1.Controls.Add(this.searchBar);
             this.splitContainer.Panel1.Controls.Add(this.gameList);
             this.splitContainer.Panel1MinSize = 30;
@@ -495,17 +501,32 @@ namespace GameManager {
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(91)))), ((int)(((byte)(130)))));
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(97)))), ((int)(((byte)(139)))));
+            this.panelMenu.Controls.Add(this.panel2);
+            this.panelMenu.Controls.Add(this.panel1);
             this.panelMenu.Controls.Add(this.buttonHelp);
             this.panelMenu.Controls.Add(this.buttonSettings);
             this.panelMenu.Controls.Add(this.buttonLibary);
             this.panelMenu.Controls.Add(this.buttonNewGames);
-            this.panelMenu.Controls.Add(this.leftBorderBtn);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 35);
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(305, 653);
+            this.panelMenu.Size = new System.Drawing.Size(305, 688);
             this.panelMenu.TabIndex = 2;
+            this.panelMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMenu_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(305, 172);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
             // 
             // buttonHelp
             // 
@@ -563,7 +584,7 @@ namespace GameManager {
             // 
             // buttonNewGames
             // 
-            this.buttonNewGames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(91)))), ((int)(((byte)(130)))));
+            this.buttonNewGames.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(97)))), ((int)(((byte)(139)))));
             this.buttonNewGames.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonNewGames.FlatAppearance.BorderSize = 0;
             this.buttonNewGames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -580,22 +601,15 @@ namespace GameManager {
             this.buttonNewGames.UseVisualStyleBackColor = false;
             this.buttonNewGames.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // leftBorderBtn
-            // 
-            this.leftBorderBtn.Location = new System.Drawing.Point(0, 0);
-            this.leftBorderBtn.Name = "leftBorderBtn";
-            this.leftBorderBtn.Size = new System.Drawing.Size(7, 60);
-            this.leftBorderBtn.TabIndex = 4;
-            // 
             // searchBar
             // 
-            this.searchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(91)))), ((int)(((byte)(130)))));
-            this.searchBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(97)))), ((int)(((byte)(139)))));
+            this.searchBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.searchBar.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.searchBar.Location = new System.Drawing.Point(0, 0);
+            this.searchBar.Location = new System.Drawing.Point(0, 651);
             this.searchBar.Margin = new System.Windows.Forms.Padding(4);
             this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(442, 35);
+            this.searchBar.Size = new System.Drawing.Size(442, 37);
             this.searchBar.TabIndex = 1;
             this.searchBar.SearchTextChanged += new System.EventHandler(this.searchBar_SearchTextChanged);
             this.searchBar.CommandKeyPressed += new System.Windows.Forms.KeyEventHandler(this.searchBar_CommandKeyPressed);
@@ -894,12 +908,39 @@ namespace GameManager {
             this.gameEditControl.Size = new System.Drawing.Size(345, 688);
             this.gameEditControl.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 516);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(305, 172);
+            this.panel1.TabIndex = 5;
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(311, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(910, 100);
+            this.panel2.TabIndex = 5;
+            // 
+            // panelTitleBar
+            // 
+            this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(97)))), ((int)(((byte)(139)))));
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(305, 0);
+            this.panelTitleBar.Name = "panelTitleBar";
+            this.panelTitleBar.Size = new System.Drawing.Size(928, 69);
+            this.panelTitleBar.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1233, 734);
+            this.Controls.Add(this.panelTitleBar);
+            this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.menuStrip);
@@ -923,7 +964,9 @@ namespace GameManager {
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gameList)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1003,6 +1046,10 @@ namespace GameManager {
         private System.Windows.Forms.Button buttonSettings;
         private System.Windows.Forms.Button buttonLibary;
         private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelTitleBar;
     }
 }
 
