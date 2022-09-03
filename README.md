@@ -12,7 +12,8 @@ https://ulmf.org/threads/dlsite-game-manager-0-3-3.6298/page-12#post-1187399
 This mod contains some fixes, tweaks, additional functions, and also basic voice works support for Lux's DLSite Game Manager 0.3.3.
 
 
-General Changes:
+# General Changes
+
 - Reworked logic for scanning folders when adding works - not only executables will be added, but also any non-empty folders with RJ code in name, and some additional file types, which can be specified in <Extensions> setting in Settings.xml (for now there are playlists, which will be handy when managing voice works). This will allow batch-adding of any types of DLSite works, not only games. Also replaced most instances of "game" word in UI with "work".
 - Recompiled targeting .NET Framework 4.6.2 to enable long paths support (> 259 characters) for Windows 10 Anniversary Update (1607) and later.
 - Tags are now pulled from english dlsite even when there are no english page instead of translating them (by 3-digit tag codes using english dlsite advanced search page as a reference).
@@ -44,7 +45,7 @@ Voice works support specific changes:
 
 
 
-Instructions:
+# Instructions
 
 - Adding works to manager:
 	- For best results make sure that for DLSite works folder names contain RJ code (RE, VJ, BJ codes also count), and for non-DLSite works folder contain one executable or playlist file.
@@ -86,7 +87,7 @@ Instructions:
 	- Press F5 to compile.
 	- Compiled executable will be at \GameManager.src\GameManager\bin\Release\GameManager.exe. Move it to main folder.
 
-Changelog:
+# Changelog
 Build 0.46.3
 - Fixed reading of DLSite Tags and Categories
 - Fixed Rename/Organize
