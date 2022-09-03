@@ -12,11 +12,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
-using FontAwesome.Sharp;
 
 namespace GameManager {
     public partial class MainForm : Form {
-        private IconButton currentBtn;
+        private Button currentBtn;
         private Panel leftBorderBtn;
         private GameListFilter filter;
         private PictureBox enlargedGameImage;
@@ -135,11 +134,10 @@ namespace GameManager {
             {
                 DisableButtons();
                 //Button
-                currentBtn = (IconButton)senderBtn;
+                currentBtn = (Button)senderBtn;
                 currentBtn.BackColor = Color.FromArgb(64, 68, 98);
                 currentBtn.ForeColor = color;
                 currentBtn.TextAlign = ContentAlignment.MiddleCenter;
-                currentBtn.IconColor = color;
                 currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
                 currentBtn.ImageAlign = ContentAlignment.MiddleRight;
                 //Left border Button
@@ -160,7 +158,6 @@ namespace GameManager {
                 currentBtn.BackColor = Color.FromArgb(85, 91, 130);
                 currentBtn.ForeColor = Color.White;
                 currentBtn.TextAlign = ContentAlignment.MiddleLeft;
-                currentBtn.IconColor = Color.White;
                 currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }

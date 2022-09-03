@@ -74,10 +74,10 @@ namespace GameManager {
             this.headerFormatStyle = new BrightIdeasSoftware.HeaderFormatStyle();
             this.splitContainer = new GameManager.TweakedSplitContainer();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.buttonHelp = new FontAwesome.Sharp.IconButton();
-            this.buttonSettings = new FontAwesome.Sharp.IconButton();
-            this.buttonLibary = new FontAwesome.Sharp.IconButton();
-            this.buttonNewGames = new FontAwesome.Sharp.IconButton();
+            this.buttonHelp = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonLibary = new System.Windows.Forms.Button();
+            this.buttonNewGames = new System.Windows.Forms.Button();
             this.leftBorderBtn = new System.Windows.Forms.Panel();
             this.searchBar = new GameManager.SearchBar();
             this.gameList = new BrightIdeasSoftware.ObjectListView();
@@ -513,9 +513,6 @@ namespace GameManager {
             this.buttonHelp.FlatAppearance.BorderSize = 0;
             this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.ForeColor = System.Drawing.Color.White;
-            this.buttonHelp.IconChar = FontAwesome.Sharp.IconChar.Question;
-            this.buttonHelp.IconColor = System.Drawing.Color.White;
-            this.buttonHelp.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHelp.Location = new System.Drawing.Point(0, 180);
             this.buttonHelp.Name = "buttonHelp";
@@ -534,9 +531,6 @@ namespace GameManager {
             this.buttonSettings.FlatAppearance.BorderSize = 0;
             this.buttonSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSettings.ForeColor = System.Drawing.Color.White;
-            this.buttonSettings.IconChar = FontAwesome.Sharp.IconChar.Toolbox;
-            this.buttonSettings.IconColor = System.Drawing.Color.White;
-            this.buttonSettings.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSettings.Location = new System.Drawing.Point(0, 120);
             this.buttonSettings.Name = "buttonSettings";
@@ -555,9 +549,6 @@ namespace GameManager {
             this.buttonLibary.FlatAppearance.BorderSize = 0;
             this.buttonLibary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLibary.ForeColor = System.Drawing.Color.White;
-            this.buttonLibary.IconChar = FontAwesome.Sharp.IconChar.Gamepad;
-            this.buttonLibary.IconColor = System.Drawing.Color.White;
-            this.buttonLibary.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonLibary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLibary.Location = new System.Drawing.Point(0, 60);
             this.buttonLibary.Name = "buttonLibary";
@@ -577,9 +568,6 @@ namespace GameManager {
             this.buttonNewGames.FlatAppearance.BorderSize = 0;
             this.buttonNewGames.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNewGames.ForeColor = System.Drawing.Color.White;
-            this.buttonNewGames.IconChar = FontAwesome.Sharp.IconChar.HandSparkles;
-            this.buttonNewGames.IconColor = System.Drawing.Color.White;
-            this.buttonNewGames.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.buttonNewGames.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonNewGames.Location = new System.Drawing.Point(0, 0);
             this.buttonNewGames.Name = "buttonNewGames";
@@ -1011,10 +999,10 @@ namespace GameManager {
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.Panel panelMenu;
-        private FontAwesome.Sharp.IconButton buttonNewGames;
-        private FontAwesome.Sharp.IconButton buttonSettings;
-        private FontAwesome.Sharp.IconButton buttonLibary;
-        private FontAwesome.Sharp.IconButton buttonHelp;
+        private System.Windows.Forms.Button buttonNewGames;
+        private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.Button buttonLibary;
+        private System.Windows.Forms.Button buttonHelp;
     }
 }
 
