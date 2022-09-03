@@ -12,9 +12,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
+using FontAwesome.Sharp;
 
 namespace GameManager {
     public partial class MainForm : Form {
+        private IconButton currentBtn;
+        private Panel leftBorderBtn;
         private GameListFilter filter;
         private PictureBox enlargedGameImage;
         private bool listInitialized = false;
@@ -113,7 +116,55 @@ namespace GameManager {
 
             InitializeGameList();
         }
+        private struct RGBColors
+        {
+            public static Color color1 = Color.FromArgb(172,126,241);
+            public static Color color2 = Color.FromArgb(249,118,176);
+            public static Color color3 = Color.FromArgb(253,138,114);
+            public static Color color4 = Color.FromArgb(95,77,221);
+            public static Color color5 = Color.FromArgb(249,88,155);
+            public static Color color6 = Color.FromArgb(24,161,251);
+        }
 
+        /// <summary>
+        /// Gets the list of games from the database and inserts them into the game list.
+        /// </summary>
+        private void ActivateButtons(object senderBtn, Color color)
+        {
+            if (senderBtn != null)
+            {
+                DisableButtons();
+                //Button
+                currentBtn = (IconButton)senderBtn;
+                currentBtn.BackColor = Color.FromArgb(64, 68, 98);
+                currentBtn.ForeColor = color;
+                currentBtn.TextAlign = ContentAlignment.MiddleCenter;
+                currentBtn.IconColor = color;
+                currentBtn.TextImageRelation = TextImageRelation.TextBeforeImage;
+                currentBtn.ImageAlign = ContentAlignment.MiddleRight;
+                //Left border Button
+                leftBorderBtn.BackColor = color;
+                leftBorderBtn.Location = new Point(0, currentBtn.Location.Y);
+                leftBorderBtn.Visible = true;
+                leftBorderBtn.BringToFront();
+            }
+        }
+        /// <summary>
+        /// Gets the list of games from the database and inserts them into the game list.
+        /// </summary>
+        private void DisableButtons()
+        {
+            if (currentBtn != null)
+            {
+                //Button
+                currentBtn.BackColor = Color.FromArgb(85, 91, 130);
+                currentBtn.ForeColor = Color.White;
+                currentBtn.TextAlign = ContentAlignment.MiddleLeft;
+                currentBtn.IconColor = Color.White;
+                currentBtn.TextImageRelation = TextImageRelation.ImageBeforeText;
+                currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
+            }
+        }
         /// <summary>
         /// Gets the list of games from the database and inserts them into the game list.
         /// </summary>
@@ -1817,5 +1868,30 @@ namespace GameManager {
 
         [DllImport("user32.dll")]
         private static extern bool GetWindowPlacement(IntPtr hWnd, out WINDOWPLACEMENT lpwndpl);
+
+        private void splitContainer_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            ActivateButtons(sender, RGBColors.color1);
+        }
+
+        private void buttonLibary_Click(object sender, EventArgs e)
+        {
+            ActivateButtons(sender, RGBColors.color2);
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            ActivateButtons(sender, RGBColors.color3);
+        }
+
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
+            ActivateButtons(sender, RGBColors.color4);
+        }
     }
 }
