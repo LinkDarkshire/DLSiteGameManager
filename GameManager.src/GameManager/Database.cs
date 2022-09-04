@@ -56,6 +56,7 @@ namespace GameManager {
                             Size integer DEFAULT NULL,
                             DLSiteFlags smallint NOT NULL,
                             IsRpgMakerGame tinyint NOT NULL,
+                            IsSWFGame tinyint NOT NULL,
                             WolfRpgMakerVersion varchar(255) DEFAULT NULL,
                             UseCustomResolution tinyint NOT NULL,
                             ResolutionWidth smallint DEFAULT NULL,
@@ -187,6 +188,7 @@ namespace GameManager {
                         int sizePos = reader.GetOrdinal("Size");
                         int dlSiteFlagsPos = reader.GetOrdinal("DLSiteFlags");
                         int isRpgMakerGamePos = reader.GetOrdinal("IsRpgMakerGame");
+                        int isSWFGamePos = reader.GetOrdinal("IsSWFGame");
                         int wolfRpgMakerVersionPos = reader.GetOrdinal("WolfRpgMakerVersion");
                         int useCustomResolutionPos = reader.GetOrdinal("UseCustomResolution");
                         int resolutionWidthPos = reader.GetOrdinal("ResolutionWidth");
@@ -226,6 +228,7 @@ namespace GameManager {
                                 IsReleasedOnEnglishDLSite = (dlSiteFlags & 8) != 0,
 								IsOnHVDB = (dlSiteFlags & 16) != 0,
                                 IsRpgMakerGame = reader.GetBoolean(isRpgMakerGamePos),
+                                IsSWFGame = reader.GetBoolean(isSWFGamePos),
                                 WolfRpgMakerVersion = (string)reader.GetValueOrNull(wolfRpgMakerVersionPos),
                                 UseCustomResolution = reader.GetBoolean(useCustomResolutionPos),
                                 CustomResolution = x.HasValue && y.HasValue ? new ScreenResolution(x.Value, y.Value) : null,
@@ -340,7 +343,7 @@ namespace GameManager {
                                                                                 @Rating, @DLSRating, @Released, @Added, @LastPlayed,
                                                                                 @TimesPlayed, @SecondsPlayed, @CircleID, @Category,
                                                                                 @Tags, @Comments, @RunWithAgth, @AgthParameters, @Size,
-                                                                                @DLSiteFlags, @IsRpgMakerGame, @WolfRpgMakerVersion,
+                                                                                @DLSiteFlags, @IsRpgMakerGame, @IsSWFGame, @WolfRpgMakerVersion,
                                                                                 @UseCustomResolution, @ResolutionWidth, @ResolutionHeight, @Language, @RunWithChiiTrans, @HVDBTags, @CVs); 
                                           SELECT last_insert_rowid();
                                           COMMIT;";
@@ -367,6 +370,7 @@ namespace GameManager {
                         query.Parameters.AddWithValue("@Size", game.Size);
                         query.Parameters.AddWithValue("@DLSiteFlags", dlSiteFlags);
                         query.Parameters.AddWithValue("@IsRpgMakerGame", game.IsRpgMakerGame);
+                        query.Parameters.AddWithValue("@IsSWFGame", game.IsSWFGame);
                         query.Parameters.AddWithValue("@WolfRpgMakerVersion", game.WolfRpgMakerVersion);
                         query.Parameters.AddWithValue("@UseCustomResolution", game.UseCustomResolution);
                         query.Parameters.AddWithValue("@ResolutionWidth", game.CustomResolution != null ? game.CustomResolution.Width : (int?)null);

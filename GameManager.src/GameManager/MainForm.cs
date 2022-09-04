@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -293,7 +294,7 @@ namespace GameManager {
             foreach (var game in games) {
                 game.Saved += game_Saved;
             }
-
+            
             gameList.AddObjects(games);
         }
 
@@ -503,19 +504,32 @@ namespace GameManager {
                 MessageBox.Show(this, game.ToString() + " has no path.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!File.Exists(game.Path)) {
-				if (Directory.Exists(game.Path)){
-					Process.Start(Settings.Instance.FileManagerPath, string.Format(Settings.Instance.FileManagerArgs, game.Path));
-				}
-				else {
-					MessageBox.Show(this, game.ToString() + "'s path is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
+                if (Directory.Exists(game.Path)) {
+                    Process.Start(Settings.Instance.FileManagerPath, string.Format(Settings.Instance.FileManagerArgs, game.Path));
+                }
+                else {
+                    MessageBox.Show(this, game.ToString() + "'s path is invalid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else {
-                var gameProcessInfo = new ProcessStartInfo();
+                var gameProcessInfo = new ProcessStartInfo(); ;
                 var translatorProcessInfo = new ProcessStartInfo();
                 var resolutionChanged = false;
                 var screenResolution = game.UseCustomResolution ? game.CustomResolution : Settings.Instance.DefaultResolution;
-
+                if (game.IsSWFGame)
+                {
+                    gameProcessInfo = new ProcessStartInfo(game.Path)
+                    {
+                        Arguments = Path.GetFileName(game.Path),
+                        UseShellExecute = false,
+                        WorkingDirectory = Path.GetDirectoryName(game.Path),
+                        FileName = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Player\\FlashPlayer.exe",
+                        Verb = "OPEN"
+                    };
+                    Process.Start(gameProcessInfo);
+                }
+                else
+                { 
                 //Only change resolution by default when launching executable files
                 if (!game.UseCustomResolution && Path.GetExtension(game.Path).ToLower() != ".exe") {
                     screenResolution = null;
@@ -543,7 +557,7 @@ namespace GameManager {
                             if (game.WolfRpgMakerVersion == "Unknown") {
                                 game.WolfRpgMakerVersion = IOUtility.GetWolfRpgVersion(game.Path);
                             }
-                            
+
                             if (game.WolfRpgMakerVersion != null) {
                                 gameProcessInfo.Arguments += " " + IOUtility.GetWolfRpgAgthParams(game.WolfRpgMakerVersion);
                             }
@@ -668,6 +682,7 @@ namespace GameManager {
                         //Ignore this exception
                     }
                 }
+            }
             }
         }
 

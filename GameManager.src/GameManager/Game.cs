@@ -55,6 +55,7 @@ namespace GameManager {
         public bool IsReleasedOnEnglishDLSite { get; set; }
 		public bool IsOnHVDB { get; set; }
         public bool IsRpgMakerGame { get; set; }
+        public bool IsSWFGame { get; set; }
         public string WolfRpgMakerVersion { get; set; }
         public bool UseCustomResolution { get; set; }
         public ScreenResolution CustomResolution { set; get; }
@@ -154,7 +155,8 @@ namespace GameManager {
 					}
                     IsRpgMakerGame = IOUtility.IsRpgMakerGame(Path);
                     WolfRpgMakerVersion = IOUtility.GetWolfRpgVersion(Path);
-					
+                    IsSWFGame = (System.IO.Path.GetExtension(Path).ToLower() == ".swf") ? true : false;
+
                     if (Title == null && Settings.Instance.GetTitleFromPath) {
                         Title = new DirectoryInfo(path).Name;
                     }
@@ -242,7 +244,7 @@ namespace GameManager {
 
 			IsRpgMakerGame = IOUtility.IsRpgMakerGame(Path);
             WolfRpgMakerVersion = IOUtility.GetWolfRpgVersion(Path);
-			
+
             if (ReportDownloadProgress != null) {
                 ReportDownloadProgress("Downloading page " + jpDLSite.Url + "...");
             }
